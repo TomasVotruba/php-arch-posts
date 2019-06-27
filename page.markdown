@@ -1,7 +1,7 @@
 # Can you Migrate any Legacy Code under 1 Month?
 ###### by Tomas Votruba
 
-> According to [PHP Framework Trends](https://www.tomasvotruba.cz/php-framework-trends/#table) from Packagist there is over 1 258 million downloads of open-source PHP frameworks for the last 12 months. That's a great number! But how many of them are on the latest version? How many of them are stuck on version 0 or 1, that is not even on packagist? And how many of you have custom PHP framework, that you just hate? What if I tell you there is a way you all could use the latest version of your favorite framework and PHP 7.4 by the end of 2019?
+> According to [PHP Framework Trends](https://www.tomasvotruba.cz/php-framework-trends/#table) from Packagist there is over 1 258 million downloads of open-source PHP frameworks for the last 12 months. That's a great number! But how many of them are on the latest version? How many of them are stuck on version 0 or 1, that is not even on packagist? And how many of you have a custom PHP framework, that you just hate? What if I tell you there is a way you all could use the latest version of your favorite framework and PHP 7.4 by the end of 2019?
 
 ## Every PHP Framework is Dying
 
@@ -19,7 +19,7 @@ PHP frameworks are also software. They get old, there is a better version of it 
 
 Nette is just one possible example, this also holds true for Symfony, Doctrine, Zend and any other evolving software project that is alive and healthy. Change is inevitable.
 
-I'll use Nette because that's the first project we migrate under... well, I'll tell you later the exact number of days.
+I'll use Nette because that's the first project we migrate it under... well, I'll tell you later the exact number of days.
 
 Also, I'll use Symfony as a go-to project, because that's my personal preference. Replace it with your personal favorite framework.
 
@@ -31,11 +31,11 @@ We migrate [Entry.do](https://entry.do/) project - API application built on cont
 
 ![Figure 1: Entrydo website](figures/figures1.png)
 
-### How big it is?
+### How big is the Project?
 
-Honestly, with pattern refactoring the size doesn't matter, but people still tend to care about it. Quantitative numbers, can be used to derive qualitative statements, since for example size and complexity can behave orthogonal to each other. Put simply, something small can be very complex and something bit does not need to be complex.
+Honestly, with pattern refactoring the size doesn't matter, but people still tend to care about it. Quantitative numbers can be used to derive qualitative statements, since for example size and complexity can behave orthogonal to each other. Put simply, something small can be very complex and something big does have to be complex at all.
 
-If we don't count tests, migration, fixtures, etc., the application has **270 PHP files** in the length of **54 357 lines** (without comments, using [phploc](https://github.com/sebastianbergmann/phploc)).
+If we don't count tests, migration, fixtures, etc., the application has **270 PHP files** totalling **54 357 lines** (without comments, using [phploc](https://github.com/sebastianbergmann/phploc)).
 
 To give you an idea, the Laravel 5.8 has 72 519 lines (without comments) at the time of writing this post.
 
@@ -44,11 +44,11 @@ If you're like me, you better understand the business logic "size", like routes 
 ## Why we did it?
 
 The application was written in Nette, which worked and met the technical requirements in the past.
- The main motivation for the transition **was the dying Nette ecosystem** and that over-integration of Symfony.
+ The main motivation for the transition **was the dying Nette ecosystem** and over-integration of Symfony - Nette was used only for Controllers and Dependency Injection, while Symfony was integrated in Console, Events, Translations, Monolog, Migrations and Doctrine.    
 
- What does "dying ecosystem" mean? Nette released just 1 minor version since July 2016, while Symfony had **6 releases** during the same period. Also, the most promoted new feature of upcoming Nette 3.0 was added type declaration of PHP 7.1, which is not really a framework feature and only adds maintenance work.
+What does "dying ecosystem" mean? Nette released just 1 minor version since July 2016, while Symfony had **6 releases** during the same period. Also, the most promoted new feature of upcoming Nette 3.0 was added type declaration of PHP 7.1, which is not really a framework feature and only adds maintenance work.
 
-The Entrydo project needed to develope faster, in a  more reliable way and with less code. As well as in an ecosystem, that is alive and kicking.
+The Entrydo project needed to develop faster, in a more reliable way and with less code. As well as in an ecosystem, that is alive and kicking.
 
 ## How we did it?
 
@@ -68,7 +68,7 @@ That's why we picked 1 week as a soft deadline and 1 month as a hard deadline. I
 
 Have you ever migrated or upgraded huge project? I bet you've picked full-rewrite or step-by-step refactoring, right? **I admit, I did too, but it's a complete nonsense way to refactor huge applications**.
 
-Both of these approaches depend on humans, their skills and their speed to refactor. Even if you have a team of 5 super smart developers, a manual rewrite of 10 000 000 lines of code might take them  most likely a huge amount of time. They would tell you it's done in 3 months, but you know how it goes with developers and estimates.
+Both of these approaches depend on humans, their skills and their speed to refactor. Even if you have a team of 5 super smart developers, a manual rewrite of 10 000 000 lines of code might take them most likely a huge amount of time. They would tell you it's done in 3 months, but you know how it goes with developers and estimates.
 
 Instead, you have to think about the way based on machine-time. It's not that popular, even though it was mentioned in _Pragmatic programmer_ book.
 
@@ -233,6 +233,6 @@ vendor/bin/rector process src --set nette-to-symfony
 
 It's not perfect since you'll have to cover edge cases that are specific only to your code, but it will save you 80 % of the boring work, that is typical for this migration.
 
-<br>
+## To Be Continued...
 
 In the next post, I'll teach you about pattern refactoring with Rector and how you can use it to migrate any PHP code you have now to your dream code.
