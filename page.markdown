@@ -5,27 +5,27 @@
 
 ## Every PHP Framework is Dying
 
-It all beings in a small country in the center of Europe - the Czech Republic. You might have heard about us thanks to Nette, PHPStan, or few Doctrine and Symfony contributors.
+It all begins in a small country in the center of Europe - the Czech Republic. You might have heard about us thanks to Nette, PHPStan, or some Doctrine and Symfony contributors.
 
 Nette is a PHP framework that was released in 2008 and is used mostly by Czech companies. If you’ve never heard about it, the very raw description would be "close to Symfony in features and Laravel in simplicity".
 
-Now, the problem with the software it gets very old very fast. Do you remember the release of PHP 5.3 in June 2009? This "namespace" thing, what a cool feature, I really loved it. Now it's 2019 and nobody cares. This is a natural process of life, or would you prefer PHP 5.3 to be the last PHP version ever?
+Now, the problem with Nette, just like any software is that it gets very old very fast. Do you remember the release of PHP 5.3 in June 2009? This "namespace" thing, what a cool feature, I really loved it. Now it's 2019 and nobody cares. This is a natural process of life, or would you prefer PHP 5.3 to be the last PHP version ever?
 
 > "Once you stop learning, you start dying."
 > _Albert Einstein_
 
-PHP frameworks are also software. They get old, there is a better version of it or there is this other framework, that has a clearer API, follows  recent trends and is easy to learn.
+PHP frameworks just like any software get old. There is always a better version of it somewhere, or there is another framework that follows more modern standards, has a clearer API, or trendy features and is easier to learn.
 
+> "The only thing that is constant is change."
+> _Heraclitus_
 
-Nette is just one possible example, this also holds true for Symfony, Doctrine, Zend and any other evolving software project that is alive and healthy. Change is inevitable.
-
-I'll use Nette because that's the first project we migrate it under... well, I'll tell you later the exact number of days.
+For the purpose of this post and showing our migration path, I'll use Nette because that's **the first project we migrate under a certain time**... I'll tell you later the exact number of days! Keep reading.
 
 Also, I'll use Symfony as a go-to project, because that's my personal preference. Replace it with your personal favorite framework.
 
 ## What We Did?
 
-Now we know about the natural process of software life-cycle, so let's get technical!
+Now that we know that all software is dying, and the natural process of the software life-cycle, let's get technical!
 
 We migrate [Entry.do](https://entry.do/) project - API application built on controllers, routing, Kdyby integrations of Symfony and Doctrine. The application has been running in production for the last 4 years. We migrated it from Nette 2.4 to Symfony 4.2.
 
@@ -44,7 +44,7 @@ If you're like me, you better understand the business logic "size", like routes 
 ## Why we did it?
 
 The application was written in Nette, which worked and met the technical requirements in the past.
- The main motivation for the transition **was the dying Nette ecosystem** and over-integration of Symfony - Nette was used only for Controllers and Dependency Injection, while Symfony was integrated in Console, Events, Translations, Monolog, Migrations and Doctrine.    
+ The main motivation for the transition **was the dying Nette ecosystem** and over-integration of Symfony - Nette was used only for Controllers and Dependency Injection, while Symfony was integrated in Console, Events, Translations, Monolog, Migrations and Doctrine.
 
 What does "dying ecosystem" mean? Nette released just 1 minor version since July 2016, while Symfony had **6 releases** during the same period. Also, the most promoted new feature of upcoming Nette 3.0 was added type declaration of PHP 7.1, which is not really a framework feature and only adds maintenance work.
 
