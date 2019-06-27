@@ -1,7 +1,7 @@
 # Can you Migrate any Legacy Code under 1 Month?
 ###### by Tomas Votruba
 
-> According to [PHP Framework Trends](https://www.tomasvotruba.cz/php-framework-trends/#table) from Packagist there is over 1 258 million downloads of open-source PHP frameworks for the last 12 months. That's a great number! But how many of them are on the latest version? How many of them are stuck on version 0 or 1, that is not even on packagist? And how many of you have a custom PHP framework, that you just hate? What if I tell you there is a way you all could use the latest version of your favorite framework and PHP 7.4 by the end of 2019?
+> According to [PHP Framework Trends](https://www.tomasvotruba.cz/php-framework-trends/#table) from Packagist there are over 1,258 million downloads of open-source PHP frameworks in the last 12 months. That's a huge number! But how many of them are on the latest version? How many of them are stuck on version 0 or 1, that is not even on packagist? And how many of you have a custom PHP framework, that you just hate? What if I tell you there is a way you all could use the latest version of your favorite framework and PHP 7.4 by the end of 2019?
 
 ## Every PHP Framework is Dying
 
@@ -9,19 +9,19 @@ It all begins in a small country in the center of Europe - the Czech Republic. Y
 
 Nette is a PHP framework that was released in 2008 and is used mostly by Czech companies. If you’ve never heard about it, the very raw description would be "close to Symfony in features and Laravel in simplicity".
 
-Now, the problem with Nette, just like any software is that it gets very old very fast. Do you remember the release of PHP 5.3 in June 2009? This "namespace" thing, what a cool feature, I really loved it. Now it's 2019 and nobody cares. This is a natural process of life, or would you prefer PHP 5.3 to be the last PHP version ever?
+Now, the problem with Nette, just like any software is that it gets very old very fast. Do you remember the release of PHP 5.3 in June 2009? This "namespace" thing, what a cool feature, I really loved it. Now it's 2019 and this is the status quo. This is a natural process of life, or would you prefer PHP 5.3 to be the last PHP version ever?
 
 > "Once you stop learning, you start dying."
 > _Albert Einstein_
 
-PHP frameworks just like any software get old. There is always a better version of it somewhere, or there is another framework that follows more modern standards, has a clearer API, or trendy features and is easier to learn.
+PHP frameworks just like any software get old. There is always a better version of it somewhere, or there is another framework that follows more modern standards, has a clearer API, or trendy features and is easier always a better version of it somewhere, or there is another framework that follows more modern standards, has a clearer API, or trendy features and is easier to learn.
 
 > "The only thing that is constant is change."
 > _Heraclitus_
 
-For the purpose of this post and showing our migration path, I'll use Nette because that's **the first project we migrate under a certain time**... I'll tell you later the exact number of days! Keep reading.
+For the purpose of this post and showing our migration path, For the purpose of this post and showing our migration path, I'll use Nette because that's **the first project we migrate under a certain time** a certatime**... I'll tell you later the exact number of days! Keep reading! Keep reading.
 
-Also, I'll use Symfony as a go-to project, because that's my personal preference. Replace it with your personal favorite framework.
+Also, I'll use Symfony as a go-to project, because that's my personal preference because it's similar to my pragmatic minimalistic thinking. Replace it with your personal favorite framework.
 
 ## What We Did?
 
@@ -33,7 +33,7 @@ We migrate [Entry.do](https://entry.do/) project - API application built on cont
 
 ### How big is the Project?
 
-Honestly, with pattern refactoring the size doesn't matter, but people still tend to care about it. Quantitative numbers can be used to derive qualitative statements, since for example size and complexity can behave orthogonal to each other. Put simply, something small can be very complex and something big does have to be complex at all.
+Honestly, with pattern refactoring the size doesn't matter, but people still tend to care about it. Quantitative numbers can be used to derive qualitative statements since for example size and complexity can behave orthogonal to each other. Put simply, something small can be very complex and something big does not have to be complex at all.
 
 If we don't count tests, migration, fixtures, etc., the application has **270 PHP files** totalling **54 357 lines** (without comments, using [phploc](https://github.com/sebastianbergmann/phploc)).
 
@@ -41,14 +41,21 @@ To give you an idea, the Laravel 5.8 has 72 519 lines (without comments) at the 
 
 If you're like me, you better understand the business logic "size", like routes - this application had **151 unique routes**.
 
+### What about Tests?
+
+Of course, better-tested applications are easier to migrate, because you get faster feedback if you break some code.
+
+Honza is also a lazy developer and doesn't like to repeat his mistakes. That's why there are 136 PHPUnit tests, that cover mostly the endpoints.
+
 ## Why we did it?
 
 The application was written in Nette, which worked and met the technical requirements in the past.
- The main motivation for the transition **was the dying Nette ecosystem** and over-integration of Symfony - Nette was used only for Controllers and Dependency Injection, while Symfony was integrated in Console, Events, Translations, Monolog, Migrations and Doctrine.
+
+The main motivation for the transition **was the dying Nette ecosystem** and over-integration of Symfony - Nette was used only for Controllers and Dependency Injection, while Symfony was integrated with Console, Events, Translations, Monolog, Migrations, and Doctrine.
 
 What does "dying ecosystem" mean? Nette released just 1 minor version since July 2016, while Symfony had **6 releases** during the same period. Also, the most promoted new feature of upcoming Nette 3.0 was added type declaration of PHP 7.1, which is not really a framework feature and only adds maintenance work.
 
-The Entrydo project needed to develop faster, in a more reliable way and with less code. As well as in an ecosystem, that is alive and kicking.
+The Entrydo project needed to develop faster, in a  more reliable way and with less code. As well as in an ecosystem, that is alive and kicking.
 
 ## How we did it?
 
@@ -72,9 +79,47 @@ Both of these approaches depend on humans, their skills and their speed to refac
 
 Instead, you have to think about the way based on machine-time. It's not that popular, even though it was mentioned in _Pragmatic programmer_ book.
 
-I call it [pattern refactoring](https://www.tomasvotruba.cz/blog/2019/04/15/pattern-refactoring/) since it focuses on patterns in code, rather in size, version of the language. A pattern can be service locator, another pattern is constructor injection.
+I call it [pattern refactoring](https://www.tomasvotruba.cz/blog/2019/04/15/pattern-refactoring/) because it focuses on patterns in code, not on size or version of the programming language.
 
-**A pattern refactoring is**... that's right: services locator to constructor injection. Does this sound hard? There is actually 4-5 way to use service locator and 2 to use constructor injection. Once you've had them covered in automated migration, you just run the scripts and it works on all the PHP code in the world, forever :).
+A pattern can be:
+
+- service locator
+    ~~~~php
+    $someService = Container::get('someService');
+    ~~~~
+- constructor injection
+    ~~~~php
+    public function __construct(SomeService $someService)
+    {
+        $this->someService = $someService;
+    }
+    ~~~~
+- static instantiation (singletons)
+    ~~~~php
+    $someService = new SomeService();
+    ~~~~
+
+But also:
+
+- active record
+    ~~~~php
+    $product = $products->get(1);
+    $product->changeName('Swim suit');
+
+    $product->save()
+    ~~~
+
+- repository + entity
+    ~~~~php
+    $product = $productRepository->get(1);
+    $product->changeName('Swim suit');
+
+    $productRepository->save($product);
+    ~~~~
+
+**An example of pattern refactoring is**... that's right: services locator to constructor injection. Does this sound hard?
+
+There is actually 4-5 way to use service locator and 2 to use constructor injection. Once you've had them covered in automated migration, you just run the scripts and it works on all the PHP code in the world, forever :).
 
 That sound crazy, right? Keep on reading.
 
@@ -93,7 +138,9 @@ If I'd own the business, all I could hear would be "we want to play, give us you
 
 That's the problem, as programmers, we only get money for the time spent at work. When we go home after 5 PM, we don't care if the business will last the next summer.
 
-We care about ourselves. We pay rent and expect to live for the next year with the same quality, we pay for Spotify and expect it to give us enjoyable songs for the long term. **The business owner is like us - they pay us monthly and expect long term sustainability**.
+We care about ourselves. We pay rent and expect to live for the next year with the same quality, we pay for Spotify and expect it to give us enjoyable songs for the long term. **The business owner is like us---they pay us monthly and expect long term sustainability**.
+
+We need to learn to make a business case for the value of migrating to a new framework or language version.
 
 ### How to be One with the Business?
 
@@ -102,7 +149,8 @@ Rector is not a tool to play and migrate code just because it can. **It needs to
 That's why we need a mind shift from "must have" to "it's better":
 
 - "When we migrate from Zend 1 to Symfony 4 in 30 days, we'll lose a month of work of 2 people, but the delivery of our task will drop from 4 hours to 30 minutes. In 3 month we have it paid and then we only profit."
-- "When we use Symfony, it will be easier to hire new developers. Last month we had a meeting with 1 Zend developer, but 6 Symfony developers."
+- "Upgrading from PHP 5.6 to PHP 7.3 will allow us to run 50 % fewer servers and to better scale at traffic peaks."
+- "When we use Symfony, it will be easier to hire new developers. Last month we had a meeting with 1 Zend developer, but 6 Symfony developers." (true story)
 - "The Symfony community is much more active then Zend in our country, in numbers 12 meetups a year to 0 meetups. It will be easier to learn and to share our know-how there, that will eventually bring us more developer, better team and code quality... therefore, cheaper feature delivery"
 
 Having all this in mind, we started to migration from Nette to Symfony.
@@ -111,9 +159,9 @@ Having all this in mind, we started to migration from Nette to Symfony.
 
 What were the patterns we needed to migrate?
 
-- NEON to YAML
-- Latte to Twig
-- Presenter to Controller
+- [NEON](https://ne-on.org/) to [YAML](https://yaml.org/) - configuration systems
+- [Latte](https://latte.nette.org/en/) to [Twig](https://twig.symfony.com/) - templating engines
+- Presenter to Controller - **C** part of *MVC*
 
 ~~~~diff
 <?php declare (strict_types = 1);
@@ -132,11 +180,11 @@ What were the patterns we needed to migrate?
 -    public static function someAction()
 +    public static function someAction(Request $request)
      {
--        $header = $this-> httpRequest-> getHeader('x');
-+        $header = $request-> headers-> get('x');
+-        $header = $this->httpRequest->getHeader('x');
++        $header = $request->headers->get('x');
 
 -        $method = Request::POST;
-+        $method = Request::METHOD_HPOST
++        $method = Request::METHOD_POST
      }
  }
 ~~~~
@@ -153,7 +201,7 @@ What were the patterns we needed to migrate?
 
  final class RouterFactory
  {
--    private const PAYMENT_RESPONSE_ROUTE = '/ payment / process';
+-    private const PAYMENT_RESPONSE_ROUTE = '/payment/process';
      // 150 more!
 
      public function create()
@@ -227,7 +275,7 @@ Roughly 50 hours took us to prepare the pattern set and 10 hours to debug one ev
 
 There is 0-chance you have a Nette project that you want to migrate to Symfony, but just in case, the migration set in Rector is ready. [Just use it](https://github.com/rectorphp/rector/blob/master/config/set/framework-migration/nette-to-symfony.yaml):
 
-~~~~
+~~~~bash
 vendor/bin/rector process src --set nette-to-symfony
 ~~~~
 
