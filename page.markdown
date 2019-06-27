@@ -21,7 +21,9 @@ PHP frameworks just like any software get old. There is always a better version 
 
 For the purpose of this post and showing our migration path, For the purpose of this post and showing our migration path, I'll use Nette because that's **the first project we migrate under a certain time** a certatime**... I'll tell you later the exact number of days! Keep reading! Keep reading.
 
-Also, I'll use Symfony as a go-to project, because that's my personal preference because it's similar to my pragmatic minimalistic thinking. Replace it with your personal favorite framework.
+Also, I'll use Symfony as a go-to project, because that's our personal preference. Replace it with your personal favorite framework. 
+
+Why do we like Symfony? It has amazing [PSR-4 autodiscovery](https://www.tomasvotruba.cz/blog/2018/12/27/how-to-convert-all-your-symfony-service-configs-to-autodiscovery/#3-steps-to-your-minimalistic-configs) that makes your config 5-lines long, it's [6-months release cycle](https://www.tomasvotruba.cz/blog/2017/10/30/what-can-you-learn-from-menstruation-and-symfony-releases/) gets me exited all the time and it has great community that sometimes feels like my own family. 
 
 ## What We Did?
 
@@ -271,12 +273,15 @@ You're counting the estimate... 17 * 40 * 2... stop, I'll count it for you:
 
 Roughly 50 hours took us to prepare the pattern set and 10 hours to debug one event race-condition. Now the migration of similar project would take us 15-20 hours.
 
-## How you can do it?
+## How Can You Do it?
 
 There is 0-chance you have a Nette project that you want to migrate to Symfony, but just in case, the migration set in Rector is ready. [Just use it](https://github.com/rectorphp/rector/blob/master/config/set/framework-migration/nette-to-symfony.yaml):
 
 ~~~~bash
-vendor/bin/rector process src --set nette-to-symfony
+composer require rector/rector --dev # install
+
+vendor/bin/rector process src --set nette-to-symfony -n # dry run
+vendor/bin/rector process src --set nette-to-symfony 
 ~~~~
 
 It's not perfect since you'll have to cover edge cases that are specific only to your code, but it will save you 80 % of the boring work, that is typical for this migration.
