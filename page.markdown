@@ -37,7 +37,7 @@ We migrate [Entry.do](https://entry.do/) project - API application built on cont
 
 Honestly, with pattern refactoring the size doesn't matter, but people still tend to care about it. Quantitative numbers can be used to derive qualitative statements since for example size and complexity can behave orthogonal to each other. Put simply, something small can be very complex and something big does not have to be complex at all.
 
-If we don't count tests, migration, fixtures, etc., the application has **270 PHP files** totalling **54 357 lines** (without comments, using [phploc](https://github.com/sebastianbergmann/phploc)).
+If we don't count tests, migration, fixtures, etc., the application has **1186 PHP files**,  **1129 classes**, totalling **54 357 lines** (without comments, using [phploc](https://github.com/sebastianbergmann/phploc)).
 
 To give you an idea, the Laravel 5.8 has 72 519 lines (without comments) at the time of writing this post.
 
