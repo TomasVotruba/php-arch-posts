@@ -14,7 +14,7 @@ Now, the problem with Nette, just like any software is that it gets very old ver
 > "Once you stop learning, you start dying."
 > _Albert Einstein_
 
-PHP frameworks just like any software get old. There is always a better version of it somewhere, or there is another framework that follows more modern standards, has a clearer API, or trendy features and is easier always a better version of it somewhere, or there is another framework that follows more modern standards, has a clearer API, or trendy features and is easier to learn.
+PHP frameworks just like any software get old. There is always a better version of it somewhere, or there is another framework that follows more modern standards, has a clearer API, or trendy features and is easier to learn.
 
 > "The only thing that is constant is change."
 > _Heraclitus_
@@ -37,9 +37,9 @@ We migrate [Entry.do](https://entry.do/) project - API application built on cont
 
 Honestly, with pattern refactoring the size doesn't matter, but people still tend to care about it. Quantitative numbers can be used to derive qualitative statements since for example size and complexity can behave orthogonal to each other. Put simply, something small can be very complex and something big does not have to be complex at all.
 
-If we don't count tests, migration, fixtures, etc., the application has **1186 PHP files**,  **1129 classes**, totalling **54 357 lines** (without comments, using [phploc](https://github.com/sebastianbergmann/phploc)).
+If we don't count tests, migration, fixtures, etc., the application has **1186 PHP files**,  **1129 classes**, totalling **54,357 lines** (without comments, using [phploc](https://github.com/sebastianbergmann/phploc)).
 
-To give you an idea, the Laravel 5.8 has 72 519 lines (without comments) at the time of writing this post.
+To give you an idea, the Laravel 5.8 has 72,519 lines (without comments) at the time of writing this post.
 
 If you're like me, you better understand the business logic "size", like routes - this application had **151 unique routes**.
 
@@ -47,7 +47,7 @@ If you're like me, you better understand the business logic "size", like routes 
 
 Of course, better-tested applications are easier to migrate, because you get faster feedback if you break some code.
 
-Honza is also a lazy developer and doesn't like to repeat his mistakes. That's why there are 136 PHPUnit tests, that cover mostly the endpoints.
+Honza Mikes is also a lazy developer and doesn't like to repeat his mistakes. That's why there are 136 PHPUnit tests, that cover mostly the endpoints.
 
 ## Why we did it?
 
@@ -61,7 +61,7 @@ The Entrydo project needed to develop faster, in a  more reliable way and with l
 
 ## How we did it?
 
-I offered [Honza Mikeš](http://github.com/JanMikes) a deal he couldn't refuse:
+I offered [Honza Mikes](http://github.com/JanMikes) a deal he couldn't refuse:
 
 > "We will give it a week and if we feel stuck, we'll give up soon enough".
 
